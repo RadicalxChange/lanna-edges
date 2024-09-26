@@ -13,6 +13,6 @@ export const config: ZuAuthArgs["config"] = [
       "10ec38f11baacad5535525bbe8e343074a483c051aa1616266f3b1df3fb7d204"
     ],
     eventId: "21c7db2e-08e3-4234-9a6e-386a592d63c8",
-    eventName: "Edge Esmeralda",
+    eventName: "Edge City Lanna",
   }
 ];

@@ -24,7 +24,7 @@ export default function Home({
   return (
     <main className="flex flex-col items-center justify-center">
       <div className="flex flex-col items-center justify-center w-full min-h-screen-minus-header bg-gradient-to-b">
-        <h1 className="text-lg m-6 text-center">Welcome to the Edge Esmeralda L∈dger</h1>
+        <h1 className="text-lg m-6 text-center">Welcome to the Edge City Lanna L∈dger</h1>
         <div className="space-x-4 mb-4">
           {!user ? (
             <button className="px-7 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-gray-400 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
