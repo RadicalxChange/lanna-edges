@@ -52,7 +52,7 @@ export default function OnboardForm({
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-2xl" autoComplete="off">
       <p className="text-sm mb-6">Get onboarded to get the most out of your ∈dges.</p>
-      <p className="text-sm mb-6">Venmo $20 to @matthew-prewitt-1 and submit the following attestations, and the admins will verify your account and credit you with 100 ∈.</p>
+      <p className="text-sm mb-6">Pay $20 to the secretary, either by venmo @matthew-prewitt-1, by ETH address 0x10b939BDD4018633709DD243a7412DB581d2E76b, or in person. and submit the following attestations, and the admins will verify your account and credit you with 100 ∈.</p>
         <div className="flex align-center min-h-12 lg:min-h-10">
             <input
                 type="checkbox"
@@ -75,7 +75,7 @@ export default function OnboardForm({
                 className="mr-3"
                 required
             />
-            <label htmlFor="paidFee" className="inline-block my-auto text-sm font-medium text-gray-600 dark:text-gray-400">I have paid $20 to the secretary, either by venmo @matthew-prewitt-1 or in person.</label>
+            <label htmlFor="paidFee" className="inline-block my-auto text-sm font-medium text-gray-600 dark:text-gray-400">I have paid $20 to the secretary, either by venmo @matthew-prewitt-1, by ETH address 0x10b939BDD4018633709DD243a7412DB581d2E76b, or in person.</label>
         </div>
         <div>
             <button
