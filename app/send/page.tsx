@@ -15,7 +15,6 @@ interface SendProps {
 export default async function Send({ searchParams }: SendProps) {
   // Load current user session and account list
   const user: Claims | null = await getUser()
-  console.log(user)
   let accounts: Account[] = [];
 
   if (user) {
