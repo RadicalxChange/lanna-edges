@@ -23,7 +23,7 @@ export default async function SignUp() {
             <OnboardForm user={user} account={account} />
           ) : (
             <>
-            <p className="text-sm mb-6">Get onboarded to get the most out of your ∈dges. Sign in or sign up to get started.</p>
+            <p className="text-sm mb-6">Get onboarded! Sign in or sign up to get started.</p>
             <div className="w-48">
               <SignInButtons redirectUri="/onboard" />
             </div>
