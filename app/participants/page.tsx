@@ -19,10 +19,10 @@ export default async function Participants() {
               Name <span className="font-bold text-center mx-2">Value Creation</span> <span className="font-bold text-right">Balance</span>
           </li>
           {accounts.sort((a: Account, b: Account) => {
-            let x = a.name.toLowerCase();
-            let y = b.name.toLowerCase();
-            if (x < y) {return -1;}
-            if (x > y) {return 1;}
+            let x = a.value_creation;
+            let y = b.value_creation;
+            if (x < y) {return 1;}
+            if (x > y) {return -1;}
             return 0;
           }).map((account, index) => {
             return (
