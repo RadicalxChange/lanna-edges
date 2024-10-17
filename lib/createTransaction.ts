@@ -6,26 +6,12 @@ import { StagedTransaction, Transaction } from "@/types/transaction"
 import { sendMail } from "./sendMail";
 
 // helper function for calculating value creation stat
-const calculateValueCreation = (transactions: Transaction[], data: StagedTransaction): number => {
-  // Group transactions by sender_id and sum their amounts
-  const senderSums: { [key: number]: number } = {};
+const calculateValueAdded = (transactions: Transaction[], data: StagedTransaction): number => {
+  // Sum the transactions from this sender to this recipient
+  const prev_sum: number = transactions.reduce((acc, current) => acc + current.amount, 0)
 
-  transactions.forEach((transaction) => {
-    const { sender_id, amount } = transaction;
-    senderSums[sender_id] = (senderSums[sender_id] || 0) + amount;
-  });
-
-  // Add the staged transaction in
-  senderSums[data.sender_id] = (senderSums[data.sender_id] || 0) + data.amount;
-
-  // Calculate rounded square roots and sum them
-  let totalValueCreation = 0;
-
-  for (const senderId in senderSums) {
-    totalValueCreation += Math.round(Math.sqrt(senderSums[senderId]));
-  }
-
-  return totalValueCreation;
+  // Calculate how much the staged transaction changes the total value creation
+  return Math.round(Math.sqrt(prev_sum + data.amount)) - Math.round(Math.sqrt(prev_sum));
 };
 
 // TODO: handle errors
@@ -38,10 +24,11 @@ export async function createTransaction(data: StagedTransaction): Promise<Transa
     const transactions: Transaction[] = await prisma.transaction.findMany({
       where: {
           recipient_id: data.recipient_account.id,
+          sender_id: data.sender_id,
       }
     });
 
-    const updatedValueCreation: number = calculateValueCreation(transactions, data)
+    const valueAdded: number = calculateValueAdded(transactions, data)
 
     // ...then update recipient balance and value_creation.
     const updatedRecipient: Account = await prisma.account.update({
@@ -50,7 +37,9 @@ export async function createTransaction(data: StagedTransaction): Promise<Transa
         balance: {
           increment: data.amount
         },
-        value_creation: updatedValueCreation
+        value_creation: {
+          increment: valueAdded
+        },
       },
     });
     recipient = data.recipient_account
