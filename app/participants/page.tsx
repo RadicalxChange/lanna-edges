@@ -16,7 +16,7 @@ export default async function Participants() {
       {user && user.account_is_member ? (
         <ul className={styles.contentBox}>
           <li className="border-b px-4 pb-2 mb-4 grid grid-cols-3 items-center" style={{ gridTemplateColumns: '2fr 2fr 1fr' }}>
-              Name <span className="font-bold text-center mx-2">Velocity</span> <span className="font-bold text-right">Balance</span>
+              Name <span className="font-bold text-center mx-2">Value Creation</span> <span className="font-bold text-right">Balance</span>
           </li>
           {accounts.sort((a: Account, b: Account) => {
             let x = a.name.toLowerCase();
@@ -27,7 +27,7 @@ export default async function Participants() {
           }).map((account, index) => {
             return (
               <li key={index} className={`px-4 py-2 my-2 grid grid-cols-3 items-center ${account.id === user.account_id ? 'text-blue-400' : ''}`} style={{ gridTemplateColumns: '2fr 2fr 1fr' }}>
-                  {account.name} <span className="font-bold text-center mx-2">{account.velocity}</span> <span className="font-bold text-right">{account.balance + " " + (account.is_member ? "∈" : "∉")}</span>
+                  {account.name} <span className="font-bold text-center mx-2">{account.value_creation}</span> <span className="font-bold text-right">{account.balance + " " + (account.is_member ? "∈" : "∉")}</span>
               </li>
             )
           })}

@@ -2,10 +2,10 @@ import { Handler, schedule } from '@netlify/functions';
 import axios from 'axios';
 
 const functionHandler: Handler = async (event, context) => {
-  console.log("Running scheduled function for depreciating velocity");
+  console.log("Running scheduled function for depreciating value_creation");
 
   try {
-    const response = await axios.get(process.env.AUTH0_BASE_URL + '/api/depreciateVelocities', {
+    const response = await axios.get(process.env.AUTH0_BASE_URL + '/api/depreciateValueCreation', {
       params: {
         secret: process.env.NETLIFY_SECRET || '',
       }

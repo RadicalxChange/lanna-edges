@@ -24,7 +24,7 @@ export async function submitOnboardingForm(data: OnboardFormState): Promise<Acco
                 name: data.name,
                 email: data.email,
                 balance: 0,
-                velocity: 0,
+                value_creation: 0,
                 is_member: false,
                 pending_approval: true
             }

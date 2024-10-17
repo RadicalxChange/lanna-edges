@@ -12,7 +12,7 @@ model Account {
   name                                       String        @db.VarChar(255)
   email                                      String        @unique
   balance                                    Int
-  velocity                                   Int           @default(0)
+  value_creation                             Int           @default(0)
   is_member                                  Boolean       @default(false)
   is_admin                                   Boolean       @default(false)
   is_bank                                    Boolean       @default(false)
